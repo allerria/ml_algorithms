@@ -1,3 +1,4 @@
+# гоша гей
 import numpy as np
 from metrics import mean_squared_error
 
