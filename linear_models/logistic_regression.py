@@ -16,12 +16,14 @@ class LogisticRegression(BaseModel, ClassifierMixin):
 
 
     def fit(self, X: np.array, y: np.array) -> None:
-        self.W = np.zeros(X.shape[1])
         n_train = X.shape[0]
+        self.W = np.zeros(X.shape[1])
         for e in range(self.max_epochs):
             prev_W = self.W.copy()
             scores = sigmoid(X.dot(self.W))
-            self.W -= self.lr / n_train * X.T.dot(scores - y)
+            dW = X.T.dot(scores - y) / n_train
+            dW += 2 * self.C * self.W
+            self.W -= self.lr * dW
             if np.linalg.norm(self.W - prev_W) < self.eps:
                 break
 

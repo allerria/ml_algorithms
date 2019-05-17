@@ -1,4 +1,4 @@
-from .functions import sigmoid
+from .functions import sigmoid, softmax
 
 
-__all__ = ['sigmoid']
+__all__ = ['sigmoid', 'softmax']

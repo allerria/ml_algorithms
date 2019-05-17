@@ -21,7 +21,8 @@ class LinearRegressor(BaseModel, RegressorMixin):
         for e in range(self.max_epochs):
             prev_W = self.W.copy()
             idx = np.random.choice(X.shape[0], 1)[0]
-            self.W -= 2 * self.lr * X[idx].T.dot(X[idx].dot(self.W) - y[idx])
+            dW = 2 * X[idx].T.dot(X[idx].dot(self.W) - y[idx])
+            self.W -= self.lr * dW
             if np.linalg.norm(self.W - prev_W) < self.eps:
                 break
         return None
