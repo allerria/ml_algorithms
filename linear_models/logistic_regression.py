@@ -1,9 +1,11 @@
 import numpy as np
-from metrics import accuracy
 from functional import sigmoid
+from base import BaseModel, ClassifierMixin
 
 
-class LogisticRegression:
+class LogisticRegression(BaseModel, ClassifierMixin):
+
+
     def __init__(self, C: np.float=1.0, lr: np.float=0.02,
                  max_epochs: np.int=1000, eps: np.float=1e-8) -> None:
         self.W = None
@@ -24,12 +26,6 @@ class LogisticRegression:
                 break
 
 
-    def predict(self, X: np.array) -> np.array:
+    def raw_predict(self, X: np.array) -> np.array:
         scores = sigmoid(X.dot(self.W))
-        y_pred = np.round(scores + self.eps)
-        return y_pred
-
-
-    def score(self, X: np.array, y: np.array) -> np.float:
-        y_pred = self.predict(X)
-        return accuracy(y, y_pred)
+        return scores

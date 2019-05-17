@@ -1,8 +1,10 @@
 import numpy as np
-from metrics import mean_squared_error
+from base import BaseModel, RegressorMixin
 
 
-class LinearRegressor:
+class LinearRegressor(BaseModel, RegressorMixin):
+
+
     def __init__(self, lr: np.float=0.02, max_epochs: np.int=10000,
                  eps: np.float=1e-8) -> None:
         self.W = None
@@ -23,14 +25,3 @@ class LinearRegressor:
             if np.linalg.norm(self.W - prev_W) < self.eps:
                 break
         return None
-
-
-    def predict(self, X: np.array) -> np.array:
-        y_pred = X.dot(self.W)
-        return y_pred
-
-
-    def score(self, X: np.array, y: np.array) -> np.float:
-        y_pred = self.predict(X)
-        score = mean_squared_error(y, y_pred)
-        return score
