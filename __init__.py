@@ -4,6 +4,7 @@ import functional
 import utils
 import losses
 import base
+import tree
 
 
-__all__ = ['metrics', 'linear_models', 'functional', 'utils', 'losses', 'base']
+__all__ = ['metrics', 'linear_models', 'functional', 'utils', 'losses', 'base', 'tree']

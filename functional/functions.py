@@ -1,5 +1,6 @@
-import numpy as np
 from typing import Union
+
+import numpy as np
 
 
 def sigmoid(x: Union[np.array, np.float]) -> Union[np.array, np.float]:

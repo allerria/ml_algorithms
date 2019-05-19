@@ -1,20 +1,19 @@
 import numpy as np
+
 from base import BaseModel, ClassifierMixin
 from functional import softmax
 
 
-#linear kernel
+# linear kernel
 class SVM(BaseModel, ClassifierMixin):
 
-
-    def __init__(self, C: np.float=1.0, lr: np.float=0.02,
-                max_epochs: np.int=1000, eps: np.float=1e-8) -> None:
+    def __init__(self, C: np.float = 1.0, lr: np.float = 0.02,
+                 max_epochs: np.int = 1000, eps: np.float = 1e-8) -> None:
         self.W = None
         self.C = C
         self.lr = lr
         self.max_epochs = max_epochs
         self.eps = eps
-
 
     def fit(self, X: np.array, y: np.array) -> None:
         n_train, dim = X.shape
