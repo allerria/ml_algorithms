@@ -24,4 +24,6 @@ def impurity(y: np.array, method: str = 'gini') -> np.float:
         return 0.0
     if method in {'gini', 'entropy'}:
         return globals()[method](y)
-    return y.std()
+    if method == 'mse':
+        return y.std()
+    raise NotImplementedError(f'{method} is not implemented')

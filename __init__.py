@@ -1,10 +1,9 @@
-import metrics
-import linear_models
-import functional
-import utils
-import losses
 import base
+import functional
+import linear_models
+import losses
+import metrics
 import tree
-
+import utils
 
 __all__ = ['metrics', 'linear_models', 'functional', 'utils', 'losses', 'base', 'tree']
